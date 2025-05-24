@@ -1,0 +1,3 @@
+RequiredCourseListNotExists: Required course list don't exists.
+StudentNotExists: Student don't exists.
+StudentAlreadyHasRequiredCourseList: Student already has a required course list.

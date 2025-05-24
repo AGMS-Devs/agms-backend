@@ -1,0 +1,27 @@
+﻿# General messages
+UserDontExists: "User doesn't exist."
+UserMailAlreadyExists: "User email already exists."
+PasswordDontMatch: "Password doesn't match."
+
+# Student messages
+StudentNotFound: "Student not found."
+StudentNumberAlreadyExists: "Student number already exists."
+InvalidStudentNumber: "Invalid student number."
+
+# Staff messages
+StaffNotFound: "Staff not found."
+InvalidStaffType: "Invalid staff type."
+StaffAlreadyAssigned: "Staff is already assigned."
+
+# Advisor messages
+AdvisorNotFound: "Advisor not found."
+AdvisorAlreadyAssigned: "Advisor is already assigned."
+MaxStudentLimitReached: "Maximum student limit reached."
+
+# Department Secretary messages
+DepartmentSecretaryNotFound: "Department secretary not found."
+DepartmentNotFound: "Department not found."
+
+# Deans Office messages
+DeansOfficeStaffNotFound: "Deans office staff not found."
+FacultyNotFound: "Faculty not found."

@@ -1,0 +1,17 @@
+using Domain.Entities;
+using Domain.Enums;
+using NArchitecture.Core.Application.Responses;
+
+namespace Application.Features.Ceremonies.Commands.Update;
+
+public class UpdatedCeremonyResponse : IResponse
+{
+    public Guid Id { get; set; }
+    public DateTime CeremonyDate { get; set; }
+    public string CeremonyLocation { get; set; }
+    public string CeremonyDescription { get; set; }
+    public CeremonyStatus CeremonyStatus { get; set; }
+    public string AcademicYear { get; set; }
+    public Guid StudentAffairsId { get; set; }
+    public StudentAffair StudentAffair { get; set; }
+}

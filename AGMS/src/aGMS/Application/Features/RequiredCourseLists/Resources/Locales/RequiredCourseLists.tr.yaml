@@ -1,0 +1,3 @@
+RequiredCourseListNotExists: Zorunlu ders listesi bulunamadı.
+StudentNotExists: Öğrenci bulunamadı.
+StudentAlreadyHasRequiredCourseList: Öğrencinin zaten bir zorunlu ders listesi var. 
