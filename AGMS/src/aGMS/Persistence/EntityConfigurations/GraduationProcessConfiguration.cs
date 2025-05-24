@@ -43,8 +43,60 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
 
     private IEnumerable<GraduationProcess> GetSeeds()
     {
-        // Bilgisayar Mühendisliği Öğrencileri
-        // 4. Sınıf - Mezun olabilir durumda
+        // ============================================================================
+        // BILGISAYAR MÜHENDİSLİĞİ ÖĞRENCİLERİ - CengList1Id
+        // ============================================================================
+        
+        // StudentUserId - FULLY APPROVED (Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.CengList1Id,
+            StudentId = UserConfiguration.StudentUserId,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+        
+        // StudentUserId2 - FULLY APPROVED (Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.CengList1Id,
+            StudentId = UserConfiguration.StudentUserId2,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId3 - PARTIALLY APPROVED (Mezuniyet süreci devam ediyor)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.CengList1Id,
+            StudentId = UserConfiguration.StudentUserId3,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId4 - FULLY APPROVED (Mezun olabilir)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -61,12 +113,12 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // 3. Sınıf - Henüz mezun olamaz
+        // StudentUserId5 - NOT APPROVED (Henüz mezun olamaz)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
             GraduationListId = GraduationListConfiguration.CengList1Id,
-            StudentId = UserConfiguration.StudentUserId3,
+            StudentId = UserConfiguration.StudentUserId5,
             AdvisorApproved = false,
             DepartmentSecretaryApproved = false,
             FacultyDeansOfficeApproved = false,
@@ -74,8 +126,42 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // Elektrik-Elektronik Mühendisliği Öğrencileri
-        // 4. Sınıf - Mezun olabilir durumda
+        // StudentUserId6 - FULLY APPROVED (Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.CengList1Id,
+            StudentId = UserConfiguration.StudentUserId6,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // ============================================================================
+        // ELEKTRİK-ELEKTRONİK MÜHENDİSLİĞİ ÖĞRENCİLERİ - EeList1Id
+        // ============================================================================
+
+        // StudentUserId7 - PARTIALLY APPROVED (Mezuniyet süreci devam ediyor)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.EeList1Id,
+            StudentId = UserConfiguration.StudentUserId7,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = false,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId8 - FULLY APPROVED (Mezun olabilir)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -92,12 +178,29 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // 3. Sınıf - Henüz mezun olamaz
+        // StudentUserId9 - FULLY APPROVED (Mezun olabilir)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
             GraduationListId = GraduationListConfiguration.EeList1Id,
-            StudentId = UserConfiguration.StudentUserId7,
+            StudentId = UserConfiguration.StudentUserId9,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId10 - NOT APPROVED (Henüz mezun olamaz)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.EeList1Id,
+            StudentId = UserConfiguration.StudentUserId10,
             AdvisorApproved = false,
             DepartmentSecretaryApproved = false,
             FacultyDeansOfficeApproved = false,
@@ -105,8 +208,24 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // Fizik Bölümü Öğrencileri
-        // 4. Sınıf - Mezuniyet süreci devam ediyor
+        // ============================================================================
+        // FİZİK BÖLÜMÜ ÖĞRENCİLERİ - PhysList1Id
+        // ============================================================================
+
+        // StudentUserId11 - NOT APPROVED (Henüz mezun olamaz)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.PhysList1Id,
+            StudentId = UserConfiguration.StudentUserId11,
+            AdvisorApproved = false,
+            DepartmentSecretaryApproved = false,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId12 - PARTIALLY APPROVED (Mezuniyet süreci devam ediyor)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -121,34 +240,11 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // 3. Sınıf - Henüz mezun olamaz
-        yield return new GraduationProcess
-        {
-            Id = Guid.NewGuid(),
-            GraduationListId = GraduationListConfiguration.PhysList1Id,
-            StudentId = UserConfiguration.StudentUserId11,
-            AdvisorApproved = false,
-            DepartmentSecretaryApproved = false,
-            FacultyDeansOfficeApproved = false,
-            StudentAffairsApproved = false,
-            CreatedDate = DateTime.UtcNow
-        };
+        // ============================================================================
+        // KİMYA BÖLÜMÜ ÖĞRENCİLERİ - ChemList1Id
+        // ============================================================================
 
-        // Kimya Bölümü Öğrencileri
-        // 2. Sınıf - Henüz mezun olamaz
-        yield return new GraduationProcess
-        {
-            Id = Guid.NewGuid(),
-            GraduationListId = GraduationListConfiguration.ChemList1Id,
-            StudentId = UserConfiguration.StudentUserId14,
-            AdvisorApproved = false,
-            DepartmentSecretaryApproved = false,
-            FacultyDeansOfficeApproved = false,
-            StudentAffairsApproved = false,
-            CreatedDate = DateTime.UtcNow
-        };
-
-        // 1. Sınıf - Henüz mezun olamaz
+        // StudentUserId13 - NOT APPROVED (Henüz mezun olamaz)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -161,13 +257,12 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // Matematik Bölümü Öğrencileri
-        // 2. Sınıf - Henüz mezun olamaz
+        // StudentUserId14 - NOT APPROVED (Henüz mezun olamaz)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
-            GraduationListId = GraduationListConfiguration.MathList1Id,
-            StudentId = UserConfiguration.StudentUserId16,
+            GraduationListId = GraduationListConfiguration.ChemList1Id,
+            StudentId = UserConfiguration.StudentUserId14,
             AdvisorApproved = false,
             DepartmentSecretaryApproved = false,
             FacultyDeansOfficeApproved = false,
@@ -175,7 +270,11 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // 1. Sınıf - Henüz mezun olamaz
+        // ============================================================================
+        // MATEMATİK BÖLÜMÜ ÖĞRENCİLERİ - MathList1Id
+        // ============================================================================
+
+        // StudentUserId15 - NOT APPROVED (Henüz mezun olamaz)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -188,8 +287,37 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // Makine Mühendisliği Öğrencileri
-        // 2. Sınıf - Henüz mezun olamaz
+        // StudentUserId16 - NOT APPROVED (Henüz mezun olamaz)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.MathList1Id,
+            StudentId = UserConfiguration.StudentUserId16,
+            AdvisorApproved = false,
+            DepartmentSecretaryApproved = false,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // ============================================================================
+        // MAKİNE MÜHENDİSLİĞİ ÖĞRENCİLERİ - MeList1Id
+        // ============================================================================
+
+        // StudentUserId17 - NOT APPROVED (Henüz mezun olamaz)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.MeList1Id,
+            StudentId = UserConfiguration.StudentUserId17,
+            AdvisorApproved = false,
+            DepartmentSecretaryApproved = false,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId18 - NOT APPROVED (Henüz mezun olamaz)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
@@ -202,16 +330,139 @@ public class GraduationProcessConfiguration : IEntityTypeConfiguration<Graduatio
             CreatedDate = DateTime.UtcNow
         };
 
-        // 1. Sınıf - Henüz mezun olamaz
+        // ============================================================================
+        // EK ÖĞRENCILER - ÇEŞİTLİ BÖLÜMLER
+        // ============================================================================
+
+        // StudentUserId19 - FULLY APPROVED (Bilgisayar Mühendisliği - Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.CengList1Id,
+            StudentId = UserConfiguration.StudentUserId19,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId20 - FULLY APPROVED (Elektrik-Elektronik Mühendisliği - Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.EeList1Id,
+            StudentId = UserConfiguration.StudentUserId20,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId21 - PARTIALLY APPROVED (Fizik Bölümü - Mezuniyet süreci devam ediyor)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.PhysList1Id,
+            StudentId = UserConfiguration.StudentUserId21,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId22 - FULLY APPROVED (Fizik Bölümü - Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.PhysList1Id,
+            StudentId = UserConfiguration.StudentUserId22,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId23 - FULLY APPROVED (Kimya Bölümü - Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.ChemList1Id,
+            StudentId = UserConfiguration.StudentUserId23,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId24 - PARTIALLY APPROVED (Matematik Bölümü - Mezuniyet süreci devam ediyor)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.MathList1Id,
+            StudentId = UserConfiguration.StudentUserId24,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = false,
+            FacultyDeansOfficeApproved = false,
+            StudentAffairsApproved = false,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId25 - FULLY APPROVED (Makine Mühendisliği - Mezun olabilir)
         yield return new GraduationProcess
         {
             Id = Guid.NewGuid(),
             GraduationListId = GraduationListConfiguration.MeList1Id,
-            StudentId = UserConfiguration.StudentUserId17,
-            AdvisorApproved = false,
-            DepartmentSecretaryApproved = false,
-            FacultyDeansOfficeApproved = false,
-            StudentAffairsApproved = false,
+            StudentId = UserConfiguration.StudentUserId25,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        // StudentUserId26 - FULLY APPROVED (Matematik Bölümü - Mezun olabilir)
+        yield return new GraduationProcess
+        {
+            Id = Guid.NewGuid(),
+            GraduationListId = GraduationListConfiguration.MathList1Id,
+            StudentId = UserConfiguration.StudentUserId26,
+            AdvisorApproved = true,
+            AdvisorApprovedDate = DateTime.UtcNow,
+            DepartmentSecretaryApproved = true,
+            DepartmentSecretaryApprovedDate = DateTime.UtcNow,
+            FacultyDeansOfficeApproved = true,
+            FacultyDeansOfficeApprovedDate = DateTime.UtcNow,
+            StudentAffairsApproved = true,
+            StudentAffairsApprovedDate = DateTime.UtcNow,
             CreatedDate = DateTime.UtcNow
         };
     }

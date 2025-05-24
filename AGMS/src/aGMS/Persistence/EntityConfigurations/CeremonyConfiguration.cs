@@ -22,5 +22,19 @@ public class CeremonyConfiguration : IEntityTypeConfiguration<Ceremony>
         builder.Property(c => c.DeletedDate).HasColumnName("DeletedDate");
 
         builder.HasQueryFilter(c => !c.DeletedDate.HasValue);
+
+        // StudentAffair relationship
+        builder.HasOne(c => c.StudentAffair)
+               .WithMany(sa => sa.Ceremonies)
+               .HasForeignKey(c => c.StudentAffairId)
+               .OnDelete(DeleteBehavior.Restrict);
+
+        // StudentUsers many-to-many relationship
+        builder.HasMany(c => c.StudentUsers)
+               .WithMany()
+               .UsingEntity<Dictionary<string, object>>(
+                   "CeremonyUser",
+                   j => j.HasOne<User>().WithMany().HasForeignKey("UserId"),
+                   j => j.HasOne<Ceremony>().WithMany().HasForeignKey("CeremonyId"));
     }
 }

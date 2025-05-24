@@ -10,11 +10,13 @@ namespace Application.Features.Ceremonies.Rules;
 public class CeremonyBusinessRules : BaseBusinessRules
 {
     private readonly ICeremonyRepository _ceremonyRepository;
+    private readonly IStudentAffairRepository _studentAffairRepository;
     private readonly ILocalizationService _localizationService;
 
-    public CeremonyBusinessRules(ICeremonyRepository ceremonyRepository, ILocalizationService localizationService)
+    public CeremonyBusinessRules(ICeremonyRepository ceremonyRepository, IStudentAffairRepository studentAffairRepository, ILocalizationService localizationService)
     {
         _ceremonyRepository = ceremonyRepository;
+        _studentAffairRepository = studentAffairRepository;
         _localizationService = localizationService;
     }
 
@@ -38,5 +40,16 @@ public class CeremonyBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
         await CeremonyShouldExistWhenSelected(ceremony);
+    }
+
+    public async Task StudentAffairShouldExistWhenSelected(Guid studentAffairId, CancellationToken cancellationToken)
+    {
+        StudentAffair? studentAffair = await _studentAffairRepository.GetAsync(
+            predicate: sa => sa.Id == studentAffairId,
+            enableTracking: false,
+            cancellationToken: cancellationToken
+        );
+        if (studentAffair == null)
+            await throwBusinessException(CeremoniesBusinessMessages.StudentAffairNotExists);
     }
 }

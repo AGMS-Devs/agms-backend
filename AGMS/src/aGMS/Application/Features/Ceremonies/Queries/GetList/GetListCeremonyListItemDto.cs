@@ -1,6 +1,8 @@
 using NArchitecture.Core.Application.Dtos;
 using Domain.Entities;
 using Domain.Enums;
+using Application.Features.Ceremonies.Dtos;
+
 namespace Application.Features.Ceremonies.Queries.GetList;
 
 public class GetListCeremonyListItemDto : IDto
@@ -12,5 +14,5 @@ public class GetListCeremonyListItemDto : IDto
     public CeremonyStatus CeremonyStatus { get; set; }
     public string AcademicYear { get; set; }
     public Guid StudentAffairsId { get; set; }
-    public StudentAffair StudentAffair { get; set; }
+    public ICollection<StudentUserDto> StudentUsers { get; set; } = new HashSet<StudentUserDto>();
 }

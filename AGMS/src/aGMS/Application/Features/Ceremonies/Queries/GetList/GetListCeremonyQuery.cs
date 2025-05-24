@@ -5,6 +5,7 @@ using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Ceremonies.Queries.GetList;
 
@@ -27,7 +28,8 @@ public class GetListCeremonyQuery : IRequest<GetListResponse<GetListCeremonyList
         {
             IPaginate<Ceremony> ceremonies = await _ceremonyRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
+                include: query => query.Include(c => c.StudentUsers).Include(c => c.StudentAffair),
                 cancellationToken: cancellationToken
             );
 

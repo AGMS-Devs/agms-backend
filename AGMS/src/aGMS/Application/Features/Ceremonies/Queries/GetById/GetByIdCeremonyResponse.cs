@@ -1,6 +1,8 @@
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using Domain.Enums;
+using Application.Features.Ceremonies.Dtos;
+
 namespace Application.Features.Ceremonies.Queries.GetById;
 
 public class GetByIdCeremonyResponse : IResponse
@@ -12,5 +14,5 @@ public class GetByIdCeremonyResponse : IResponse
     public CeremonyStatus CeremonyStatus { get; set; }
     public string AcademicYear { get; set; }
     public Guid StudentAffairsId { get; set; }
-    public StudentAffair StudentAffair { get; set; }
+    public ICollection<StudentUserDto> StudentUsers { get; set; } = new HashSet<StudentUserDto>();
 }

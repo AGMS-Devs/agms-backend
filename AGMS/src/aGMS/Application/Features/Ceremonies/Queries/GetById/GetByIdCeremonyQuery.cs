@@ -3,6 +3,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Ceremonies.Queries.GetById;
 
@@ -25,7 +26,10 @@ public class GetByIdCeremonyQuery : IRequest<GetByIdCeremonyResponse>
 
         public async Task<GetByIdCeremonyResponse> Handle(GetByIdCeremonyQuery request, CancellationToken cancellationToken)
         {
-            Ceremony? ceremony = await _ceremonyRepository.GetAsync(predicate: c => c.Id == request.Id, cancellationToken: cancellationToken);
+            Ceremony? ceremony = await _ceremonyRepository.GetAsync(
+                predicate: c => c.Id == request.Id, 
+                include: query => query.Include(c => c.StudentUsers).Include(c => c.StudentAffair),
+                cancellationToken: cancellationToken);
             await _ceremonyBusinessRules.CeremonyShouldExistWhenSelected(ceremony);
 
             GetByIdCeremonyResponse response = _mapper.Map<GetByIdCeremonyResponse>(ceremony);

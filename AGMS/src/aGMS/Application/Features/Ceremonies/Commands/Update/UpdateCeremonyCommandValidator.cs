@@ -13,6 +13,5 @@ public class UpdateCeremonyCommandValidator : AbstractValidator<UpdateCeremonyCo
         RuleFor(c => c.CeremonyStatus).NotEmpty();
         RuleFor(c => c.AcademicYear).NotEmpty();
         RuleFor(c => c.StudentAffairsId).NotEmpty();
-        RuleFor(c => c.StudentAffair).NotEmpty();
     }
 }
