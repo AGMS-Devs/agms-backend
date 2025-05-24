@@ -3,10 +3,12 @@ using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
 using Application.Services.UsersService;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Security.Enums;
 using NArchitecture.Core.Security.JWT;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Auth.Commands.Login;
 
@@ -51,14 +53,22 @@ public class LoginCommand : IRequest<LoggedResponse>
         {
             User? user = await _userService.GetAsync(
                 predicate: u => u.Email == request.UserForLoginDto.Email,
-                cancellationToken: cancellationToken
+                cancellationToken: cancellationToken,
+                include: q => q.Include(u => u.StaffProfile)
             );
             await _authBusinessRules.UserShouldBeExistsWhenSelected(user);
             await _authBusinessRules.UserPasswordShouldBeMatch(user!, request.UserForLoginDto.Password);
 
             LoggedResponse loggedResponse = new();
 
-            if (user!.AuthenticatorType is not AuthenticatorType.None)
+            loggedResponse.UserType = user!.UserType;
+            
+            if (user.UserType == Domain.Enums.UserType.Staff && user.StaffProfile != null)
+            {
+                loggedResponse.StaffRole = user.StaffProfile.StaffRole;
+            }
+
+            if (user.AuthenticatorType is not AuthenticatorType.None)
             {
                 if (request.UserForLoginDto.AuthenticatorCode is null)
                 {
