@@ -13,7 +13,7 @@ public static class PersistenceServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<BaseDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("BaseDb")));
+            options.UseNpgsql(configuration.GetConnectionString("PostgreSql")));
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
 
         services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();

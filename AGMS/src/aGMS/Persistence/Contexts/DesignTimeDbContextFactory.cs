@@ -19,7 +19,7 @@ namespace Persistence.Contexts;
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<BaseDbContext>();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("BaseDb"), options => options.CommandTimeout(60));
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("PostgreSql"), options => options.CommandTimeout(60));
 
             return new BaseDbContext(optionsBuilder.Options, configuration);
         }
