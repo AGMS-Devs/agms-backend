@@ -23,7 +23,9 @@ public class MappingProfiles : Profile
         CreateMap<User, UpdatedUserFromAuthResponse>().ReverseMap();
         CreateMap<User, DeleteUserCommand>().ReverseMap();
         CreateMap<User, DeletedUserResponse>().ReverseMap();
-        CreateMap<User, GetByIdUserResponse>().ReverseMap();
+        CreateMap<User, GetByIdUserResponse>()
+            .ForMember(dest => dest.StaffRole, opt => opt.MapFrom(src => src.StaffProfile != null ? src.StaffProfile.StaffRole : (Domain.Enums.StaffRole?)null))
+            .ReverseMap();
         CreateMap<User, GetListUserListItemDto>().ReverseMap();
         CreateMap<IPaginate<User>, GetListResponse<GetListUserListItemDto>>().ReverseMap();
     }
