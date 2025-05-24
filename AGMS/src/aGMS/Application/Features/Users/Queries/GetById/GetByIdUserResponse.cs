@@ -11,6 +11,7 @@ public class GetByIdUserResponse : IResponse
     public string Email { get; set; }
     public string? PhoneNumber { get; set; }
     public UserType UserType { get; set; }
+    public StaffRole? StaffRole { get; set; }
     public bool IsActive { get; set; }
 
     public GetByIdUserResponse()
@@ -20,7 +21,7 @@ public class GetByIdUserResponse : IResponse
         Email = string.Empty;
     }
 
-    public GetByIdUserResponse(Guid id, string name, string surname, string email, string? phoneNumber, UserType userType, bool isActive)
+    public GetByIdUserResponse(Guid id, string name, string surname, string email, string? phoneNumber, UserType userType, StaffRole? staffRole, bool isActive)
     {
         Id = id;
         Name = name;
@@ -28,6 +29,7 @@ public class GetByIdUserResponse : IResponse
         Email = email;
         PhoneNumber = phoneNumber;
         UserType = userType;
+        StaffRole = staffRole;
         IsActive = isActive;
     }
 }

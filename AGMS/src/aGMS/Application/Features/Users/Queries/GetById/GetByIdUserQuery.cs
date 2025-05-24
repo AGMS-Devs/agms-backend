@@ -5,6 +5,7 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Users.Queries.GetById;
 
@@ -32,6 +33,7 @@ public class GetByIdUserQuery : IRequest<GetByIdUserResponse>
             User? user = await _userRepository.GetAsync(
                 predicate: b => b.Id.Equals(request.Id),
                 enableTracking: false,
+                include: q => q.Include(u => u.StaffProfile),
                 cancellationToken: cancellationToken
             );
             await _userBusinessRules.UserShouldBeExistsWhenSelected(user);
