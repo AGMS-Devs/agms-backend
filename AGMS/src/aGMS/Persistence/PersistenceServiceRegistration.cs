@@ -12,8 +12,12 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
+        // Try DATABASE_URL first (Render standard), then fallback to PostgreSql
+        var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+                              ?? configuration.GetConnectionString("PostgreSql");
+        
         services.AddDbContext<BaseDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("PostgreSql")));
+            options.UseNpgsql(connectionString));
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
 
         services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
