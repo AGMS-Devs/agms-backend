@@ -19,14 +19,17 @@ public class GetByIdMessageQuery : IRequest<GetByIdMessageResponse>
         private readonly IMessageRepository _messageRepository;
         private readonly MessageBusinessRules _messageBusinessRules;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IAdvisorRepository _advisorRepository;
 
         public GetByIdMessageQueryHandler(IMapper mapper, IMessageRepository messageRepository, 
-                                        MessageBusinessRules messageBusinessRules, IHttpContextAccessor httpContextAccessor)
+                                        MessageBusinessRules messageBusinessRules, IHttpContextAccessor httpContextAccessor,
+                                        IAdvisorRepository advisorRepository)
         {
             _mapper = mapper;
             _messageRepository = messageRepository;
             _messageBusinessRules = messageBusinessRules;
             _httpContextAccessor = httpContextAccessor;
+            _advisorRepository = advisorRepository;
         }
 
         public async Task<GetByIdMessageResponse> Handle(GetByIdMessageQuery request, CancellationToken cancellationToken)
@@ -38,11 +41,27 @@ public class GetByIdMessageQuery : IRequest<GetByIdMessageResponse>
                 throw new UnauthorizedAccessException("User not authenticated or invalid user ID");
             }
 
-            // Sadece current user'a gönderilen ve belirtilen ID'ye sahip mesajı getir
-            Message? message = await _messageRepository.GetAsync(
-                predicate: m => m.Id == request.Id && m.ReceiverId == currentUserId,
-                include: query => query.Include(m => m.Sender).Include(m => m.Receiver),
-                cancellationToken: cancellationToken);
+            // Current user'ın Advisor olup olmadığını kontrol et
+            var advisor = await _advisorRepository.GetAsync(
+                predicate: a => a.Id == currentUserId,
+                cancellationToken: cancellationToken
+            );
+
+            Message? message;
+            if (advisor != null)
+            {
+                // Advisor ise: sadece kendi gönderdiği mesajları görebilir
+                message = await _messageRepository.GetAsync(
+                    predicate: m => m.Id == request.Id && m.AdvisorId == currentUserId,
+                    include: query => query.Include(m => m.Advisor),
+                    cancellationToken: cancellationToken);
+            }
+            else
+            {
+                // Student ise: kendisine gönderilen mesajları görebilir
+                // Öğrenci numarasını user'dan almamız gerekiyor
+                throw new UnauthorizedAccessException("Student access requires student number identification");
+            }
                 
             await _messageBusinessRules.MessageShouldExistWhenSelected(message);
 

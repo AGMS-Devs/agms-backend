@@ -5,23 +5,14 @@ public class MessageDto
     public Guid Id { get; set; }
     public string Content { get; set; }
     public DateTime SentAt { get; set; }
-    public Guid SenderId { get; set; }
-    public Guid ReceiverId { get; set; }
+    public Guid AdvisorId { get; set; }
+    public string StudentNumber { get; set; }
     public bool IsRead { get; set; }
     
-    public SenderDto Sender { get; set; }
-    public ReceiverDto Receiver { get; set; }
+    public AdvisorDto Advisor { get; set; }
 }
 
-public class SenderDto
-{
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public string Email { get; set; }
-}
-
-public class ReceiverDto
+public class AdvisorDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

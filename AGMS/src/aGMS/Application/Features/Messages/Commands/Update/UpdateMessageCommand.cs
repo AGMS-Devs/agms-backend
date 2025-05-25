@@ -31,7 +31,7 @@ public class UpdateMessageCommand : IRequest<UpdatedMessageResponse>
         {
             Message? message = await _messageRepository.GetAsync(
                 predicate: m => m.Id == request.Id, 
-                include: query => query.Include(m => m.Sender).Include(m => m.Receiver),
+                include: query => query.Include(m => m.Advisor),
                 cancellationToken: cancellationToken);
                 
             await _messageBusinessRules.MessageShouldExistWhenSelected(message);

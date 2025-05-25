@@ -1,10 +1,10 @@
-using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
+using NArchitecture.Core.Application.Dtos;
 using Application.Features.Messages.Dtos;
 
-namespace Application.Features.Messages.Commands.Update;
+namespace Application.Features.Messages.Queries.GetStudentMessages;
 
-public class UpdatedMessageResponse : IResponse
+public class GetStudentMessagesListItemDto : IDto
 {
     public Guid Id { get; set; }
     public string Content { get; set; }
@@ -13,4 +13,4 @@ public class UpdatedMessageResponse : IResponse
     public string StudentNumber { get; set; }
     public bool IsRead { get; set; }
     public AdvisorDto Advisor { get; set; }
-}
+} 

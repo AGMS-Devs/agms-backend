@@ -59,7 +59,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ComputerEngineeringDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ComputerEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ComputerEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -72,7 +72,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ComputerEngineeringDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ComputerEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ComputerEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -85,7 +85,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ComputerEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ComputerEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ComputerEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -98,7 +98,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ComputerEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ComputerEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ComputerEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -111,7 +111,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ComputerEngineeringDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ComputerEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ElectricalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -138,7 +138,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ElectricalEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ElectricalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ElectricalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -151,7 +151,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ElectricalEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ElectricalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ElectricalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -177,7 +177,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ElectricalEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ElectricalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.ElectricalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -191,7 +191,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.PhysicsDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.PhysicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Physics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -204,7 +204,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.PhysicsDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.PhysicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Physics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -217,7 +217,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.PhysicsDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.PhysicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Physics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -230,7 +230,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.PhysicsDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.PhysicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Physics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -257,7 +257,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ChemistryDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ChemistryAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Chemistry1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -270,7 +270,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ChemistryDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ChemistryAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Chemistry1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -283,7 +283,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.ChemistryDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.ChemistryAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Chemistry1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -297,7 +297,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MathematicsDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MathematicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Mathematics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -323,7 +323,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MathematicsDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MathematicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Mathematics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -336,7 +336,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MathematicsDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MathematicsAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.Mathematics1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -350,7 +350,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MechanicalEngineeringDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MechanicalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.MechanicalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -363,7 +363,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MechanicalEngineeringDepartmentId,
             EnrollDate = new DateTime(2023, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+            GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MechanicalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.MechanicalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow
@@ -376,7 +376,7 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             DepartmentId = DepartmentConfiguration.MechanicalEngineeringDepartmentId,
             EnrollDate = new DateTime(2022, 9, 1),
             StudentStatus = StudentStatus.Active,
-            GraduationStatus = GraduationStatus.Approved,
+                GraduationStatus = GraduationStatus.Pending,
             AssignedAdvisorId = AdvisorConfiguration.MechanicalEngineeringAdvisorId1,
             RequiredCourseListId = RequiredCourseListConfiguration.MechanicalEngineering1RequiredCourseListId,
             CreatedDate = DateTime.UtcNow

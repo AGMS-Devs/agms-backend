@@ -9,9 +9,8 @@ public class GetListMessageListItemDto : IDto
     public Guid Id { get; set; }
     public string Content { get; set; }
     public DateTime SentAt { get; set; }
-    public Guid SenderId { get; set; }
-    public Guid ReceiverId { get; set; }
+    public Guid AdvisorId { get; set; }
+    public string StudentNumber { get; set; }
     public bool IsRead { get; set; }
-    public SenderDto Sender { get; set; }
-    public ReceiverDto Receiver { get; set; }
+    public AdvisorDto Advisor { get; set; }
 }

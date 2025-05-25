@@ -1,6 +1,7 @@
 using Application.Features.Students.Commands.Create;
 using Application.Features.Students.Commands.Delete;
 using Application.Features.Students.Commands.Update;
+using Application.Features.Students.Commands.UpdateAllGraduationStatuses;
 using Application.Features.Students.Queries.GetById;
 using Application.Features.Students.Queries.GetList;
 using Application.Features.Students.Queries.GetStudentsByDepartment;

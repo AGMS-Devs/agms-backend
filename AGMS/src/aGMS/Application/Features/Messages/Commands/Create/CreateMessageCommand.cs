@@ -12,23 +12,23 @@ namespace Application.Features.Messages.Commands.Create;
 public class CreateMessageCommand : IRequest<CreatedMessageResponse>
 {
     public string Content { get; set; }
-    public Guid ReceiverId { get; set; }
+    public string StudentNumber { get; set; }
 
     public class CreateMessageCommandHandler : IRequestHandler<CreateMessageCommand, CreatedMessageResponse>
     {
         private readonly IMapper _mapper;
         private readonly IMessageRepository _messageRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IAdvisorRepository _advisorRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly MessageBusinessRules _messageBusinessRules;
 
         public CreateMessageCommandHandler(IMapper mapper, IMessageRepository messageRepository, 
-                                         IUserRepository userRepository, IHttpContextAccessor httpContextAccessor,
+                                         IAdvisorRepository advisorRepository, IHttpContextAccessor httpContextAccessor,
                                          MessageBusinessRules messageBusinessRules)
         {
             _mapper = mapper;
             _messageRepository = messageRepository;
-            _userRepository = userRepository;
+            _advisorRepository = advisorRepository;
             _httpContextAccessor = httpContextAccessor;
             _messageBusinessRules = messageBusinessRules;
         }
@@ -37,46 +37,41 @@ public class CreateMessageCommand : IRequest<CreatedMessageResponse>
         {
             // Current user'ın ID'sini al
             var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid senderId))
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid currentUserId))
             {
                 throw new UnauthorizedAccessException("User not authenticated or invalid user ID");
             }
 
-            // Receiver kontrolü
-            User? receiver = await _userRepository.GetAsync(
-                predicate: u => u.Id == request.ReceiverId,
+            // Current user'ın Advisor olup olmadığını kontrol et
+            Advisor? advisor = await _advisorRepository.GetAsync(
+                predicate: a => a.Id == currentUserId,
                 cancellationToken: cancellationToken
             );
             
-            if (receiver == null)
-                throw new Exception("Receiver user not found");
+            if (advisor == null)
+                throw new UnauthorizedAccessException("Only advisors can send messages");
 
-            // Sender kontrolü (opsiyonel - emin olmak için)
-            User? sender = await _userRepository.GetAsync(
-                predicate: u => u.Id == senderId,
-                cancellationToken: cancellationToken
-            );
-            
-            if (sender == null)
-                throw new Exception("Sender user not found");
+            // StudentNumber validation (öğrenci numarasının geçerli olup olmadığını kontrol edebiliriz)
+            if (string.IsNullOrWhiteSpace(request.StudentNumber))
+                throw new ArgumentException("Student number cannot be empty");
 
-            // Message oluştur - SenderId current user'ın ID'si
+            // Message oluştur - AdvisorId current user'ın ID'si
             Message message = new Message(
                 content: request.Content,
-                senderId: senderId,
-                receiverId: request.ReceiverId
+                advisorId: currentUserId,
+                studentNumber: request.StudentNumber
             );
 
             await _messageRepository.AddAsync(message);
 
-            // Response için gerekli User bilgilerini yükle
-            Message messageWithUsers = await _messageRepository.GetAsync(
+            // Response için gerekli Advisor bilgilerini yükle
+            Message messageWithAdvisor = await _messageRepository.GetAsync(
                 predicate: m => m.Id == message.Id,
-                include: query => query.Include(m => m.Sender).Include(m => m.Receiver),
+                include: query => query.Include(m => m.Advisor),
                 cancellationToken: cancellationToken
             );
 
-            CreatedMessageResponse response = _mapper.Map<CreatedMessageResponse>(messageWithUsers);
+            CreatedMessageResponse response = _mapper.Map<CreatedMessageResponse>(messageWithAdvisor);
             return response;
         }
     }

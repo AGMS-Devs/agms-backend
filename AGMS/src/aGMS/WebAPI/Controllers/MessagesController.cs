@@ -3,6 +3,7 @@ using Application.Features.Messages.Commands.Delete;
 using Application.Features.Messages.Commands.Update;
 using Application.Features.Messages.Queries.GetById;
 using Application.Features.Messages.Queries.GetList;
+using Application.Features.Messages.Queries.GetStudentMessages;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -45,10 +46,18 @@ public class MessagesController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest, [FromQuery] string? studentNumber)
     {
-        GetListMessageQuery getListMessageQuery = new() { PageRequest = pageRequest };
+        GetListMessageQuery getListMessageQuery = new() { PageRequest = pageRequest, StudentNumber = studentNumber };
         GetListResponse<GetListMessageListItemDto> response = await Mediator.Send(getListMessageQuery);
+        return Ok(response);
+    }
+
+    [HttpGet("student/{studentNumber}")]
+    public async Task<IActionResult> GetStudentMessages([FromRoute] string studentNumber, [FromQuery] PageRequest pageRequest)
+    {
+        GetStudentMessagesQuery getStudentMessagesQuery = new() { StudentNumber = studentNumber, PageRequest = pageRequest };
+        GetListResponse<GetStudentMessagesListItemDto> response = await Mediator.Send(getStudentMessagesQuery);
         return Ok(response);
     }
 }

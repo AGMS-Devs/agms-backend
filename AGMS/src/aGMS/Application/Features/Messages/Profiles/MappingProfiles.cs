@@ -3,6 +3,7 @@ using Application.Features.Messages.Commands.Delete;
 using Application.Features.Messages.Commands.Update;
 using Application.Features.Messages.Queries.GetById;
 using Application.Features.Messages.Queries.GetList;
+using Application.Features.Messages.Queries.GetStudentMessages;
 using Application.Features.Messages.Dtos;
 using AutoMapper;
 using NArchitecture.Core.Application.Responses;
@@ -18,33 +19,31 @@ public class MappingProfiles : Profile
         CreateMap<Message, CreateMessageCommand>().ReverseMap();
         
         CreateMap<Message, CreatedMessageResponse>()
-            .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
-            .ForMember(dest => dest.Receiver, opt => opt.MapFrom(src => src.Receiver));
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
             
         CreateMap<Message, UpdateMessageCommand>().ReverseMap();
         
         CreateMap<Message, UpdatedMessageResponse>()
-            .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
-            .ForMember(dest => dest.Receiver, opt => opt.MapFrom(src => src.Receiver));
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
             
         CreateMap<Message, DeleteMessageCommand>().ReverseMap();
         CreateMap<Message, DeletedMessageResponse>().ReverseMap();
         
         CreateMap<Message, GetByIdMessageResponse>()
-            .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
-            .ForMember(dest => dest.Receiver, opt => opt.MapFrom(src => src.Receiver));
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
             
         CreateMap<Message, GetListMessageListItemDto>()
-            .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
-            .ForMember(dest => dest.Receiver, opt => opt.MapFrom(src => src.Receiver));
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
+
+        CreateMap<Message, GetStudentMessagesListItemDto>()
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
             
         CreateMap<IPaginate<Message>, GetListResponse<GetListMessageListItemDto>>().ReverseMap();
+        CreateMap<IPaginate<Message>, GetListResponse<GetStudentMessagesListItemDto>>().ReverseMap();
 
-        // User to DTO mappings
-        CreateMap<User, SenderDto>();
-        CreateMap<User, ReceiverDto>();
+        // Advisor to DTO mappings
+        CreateMap<Advisor, AdvisorDto>();
         CreateMap<Message, MessageDto>()
-            .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
-            .ForMember(dest => dest.Receiver, opt => opt.MapFrom(src => src.Receiver));
+            .ForMember(dest => dest.Advisor, opt => opt.MapFrom(src => src.Advisor));
     }
 }

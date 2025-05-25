@@ -78,7 +78,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     public static Guid StudentUserId24 { get; } = new Guid("e8a7af40-b210-430e-967a-e590bab72810");
     public static Guid StudentUserId25 { get; } = new Guid("e8a7af40-b209-430e-967a-e590bab72810");
     public static Guid StudentUserId26 { get; } = new Guid("e8a7af40-b208-430e-967a-e590bab72810");
-    public static Guid StudentAffairsStaffUserId { get; } = new Guid("33333333-3333-3333-3333-33333333333A");
+    public static Guid StudentAffairsStaffUserId { get; } = new Guid("33333333-3333-3333-3333-33333333333a");
     public static Guid ComputerEngineeringAdvisorUserId1 { get; } = AdvisorConfiguration.ComputerEngineeringAdvisorId1;
 
     public static Guid ElectricalEngineeringAdvisorUserId1 { get; } = AdvisorConfiguration.ElectricalEngineeringAdvisorId1;
@@ -93,12 +93,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
 
     // Staff için User ID'leri
-    public static Guid DepartmentSecretaryUserId { get; } = new Guid("55555555-5555-5555-5555-55555555555A");
+    public static Guid DepartmentSecretaryUserId { get; } = new Guid("55555555-5555-5555-5555-55555555555a");
     public static Guid ElectricalEngineeringDepartmentSecretaryUserId { get; } = new Guid("e32d7b07-a92e-4dda-83e0-c90ee8cad8e5");
     public static Guid PhysicsDepartmentSecretaryUserId { get; } = new Guid("89e73bfc-718e-49d4-92af-1c576d281cf4");
-    public static Guid DeansOfficeStaffUserId { get; } = new Guid("66666666-6666-6666-6666-66666666666A");
-    public static Guid ScienceFacultyDeansOfficeStaffUserId { get; } = new Guid("77777777-7777-7777-7777-77777777777A");
-    public static Guid RectorateStaffUserId { get; } = new Guid("88888888-8888-8888-8888-88888888888A");
+    public static Guid DeansOfficeStaffUserId { get; } = new Guid("66666666-6666-6666-6666-66666666666a");
+    public static Guid ScienceFacultyDeansOfficeStaffUserId { get; } = new Guid("77777777-7777-7777-7777-77777777777a");
+    public static Guid RectorateStaffUserId { get; } = new Guid("88888888-8888-8888-8888-88888888888a");
 
     private IEnumerable<User> GetSeeds()
     {
@@ -537,8 +537,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         yield return new User
         {
             Id = ComputerEngineeringAdvisorUserId1,
-            Name = "Dr. Mehmet",
-            Surname = "Yılmaz",
+            Name = "Ozan Raşit",
+            Surname = "Yürüm",
             Email = "advisor1@iyte.edu.tr",
             PasswordHash = advisorHash,
             PasswordSalt = advisorSalt,
@@ -711,8 +711,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         yield return new User
         {
             Id = RectorateStaffUserId,
-            Name = "Mahmut",
-            Surname = "Özdemir",
+            Name = "Yusuf",
+            Surname = "Baran",
             Email = "rectorate@iyte.edu.tr",
             PasswordHash = rectorateHash,
             PasswordSalt = rectorateSalt,

@@ -1,6 +1,7 @@
 using Application.Features.Students.Commands.Create;
 using Application.Features.Students.Commands.Delete;
 using Application.Features.Students.Commands.Update;
+using Application.Features.Students.Commands.UpdateAllGraduationStatuses;
 using Application.Features.Students.Queries.GetById;
 using Application.Features.Students.Queries.GetList;
 using Application.Features.Students.Queries.GetStudentsByDepartment;
@@ -27,6 +28,14 @@ public class StudentsController : BaseController
     public async Task<IActionResult> Update([FromBody] UpdateStudentCommand updateStudentCommand)
     {
         UpdatedStudentResponse response = await Mediator.Send(updateStudentCommand);
+
+        return Ok(response);
+    }
+
+    [HttpPut("update-graduation-statuses")]
+    public async Task<IActionResult> UpdateAllGraduationStatuses()
+    {
+        UpdatedAllGraduationStatusesResponse response = await Mediator.Send(new UpdateAllGraduationStatusesCommand());
 
         return Ok(response);
     }

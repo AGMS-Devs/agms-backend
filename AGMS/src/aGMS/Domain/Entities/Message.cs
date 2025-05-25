@@ -9,19 +9,19 @@ public class Message : Entity<Guid>
     public DateTime SentAt { get; set; } = DateTime.UtcNow;
 
 
-    public User Sender { get; set; }
-    public User Receiver { get; set; }
-    public Guid ReceiverId { get; set; }
-    public Guid SenderId { get; set; }
+    public Guid AdvisorId { get; set; }
+    public Advisor Advisor { get; set; }
+    public string StudentNumber { get; set; }
+
 
     public bool IsRead { get; set; } = false;
 
     public Message(){}
-    public Message(string content, Guid senderId, Guid receiverId)
+    public Message(string content, Guid advisorId, string studentNumber)
     {
         Content = content;
-        SenderId = senderId;
-        ReceiverId = receiverId;
+        AdvisorId = advisorId;
+        StudentNumber = studentNumber;
         SentAt = DateTime.UtcNow;
         IsRead = false;
     }

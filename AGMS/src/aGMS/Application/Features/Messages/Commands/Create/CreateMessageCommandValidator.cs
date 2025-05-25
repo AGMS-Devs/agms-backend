@@ -7,6 +7,6 @@ public class CreateMessageCommandValidator : AbstractValidator<CreateMessageComm
     public CreateMessageCommandValidator()
     {
         RuleFor(c => c.Content).NotEmpty().WithMessage("Message content is required");
-        RuleFor(c => c.ReceiverId).NotEmpty().WithMessage("Receiver ID is required");
+        RuleFor(c => c.StudentNumber).NotEmpty().WithMessage("Student number is required");
     }
 }
