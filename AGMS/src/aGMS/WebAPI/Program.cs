@@ -1,7 +1,6 @@
 using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.WebApi.Extensions;
@@ -14,7 +13,6 @@ using NArchitecture.Core.Security.Encryption;
 using NArchitecture.Core.Security.JWT;
 using NArchitecture.Core.Security.WebApi.Swagger.Extensions;
 using Persistence;
-using Persistence.Contexts;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using WebAPI;
 using System.Text.Json.Serialization;
@@ -111,27 +109,8 @@ app.UseSwaggerUI(opt =>
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
-// Apply migrations in production
-if (app.Environment.IsProduction())
-{
-    try
-    {
-        using var scope = app.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<BaseDbContext>();
-        Console.WriteLine("Applying database migrations...");
-        dbContext.Database.Migrate();
-        Console.WriteLine("✅ Database migrations applied successfully!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"❌ Error applying migrations: {ex.Message}");
-        // Don't stop the application, log the error
-    }
-}
-else
-{
-    // app.UseDbMigrationApplier();
-}
+// Temporarily disable migration for testing
+// app.UseDbMigrationApplier();
 
 app.UseAuthentication();
 app.UseAuthorization();
