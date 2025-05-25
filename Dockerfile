@@ -2,16 +2,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Solution ve proje dosyalarını kopyala
-COPY AGMS/AGMS.sln ./AGMS/
+# Proje dosyalarını kopyala (sadece gerekli olanlar)
 COPY AGMS/src/aGMS/Domain/Domain.csproj ./AGMS/src/aGMS/Domain/
 COPY AGMS/src/aGMS/Application/Application.csproj ./AGMS/src/aGMS/Application/
 COPY AGMS/src/aGMS/Infrastructure/Infrastructure.csproj ./AGMS/src/aGMS/Infrastructure/
 COPY AGMS/src/aGMS/Persistence/Persistence.csproj ./AGMS/src/aGMS/Persistence/
 COPY AGMS/src/aGMS/WebAPI/WebAPI.csproj ./AGMS/src/aGMS/WebAPI/
 
-# Dependencies restore
-WORKDIR /src/AGMS
+# Dependencies restore (sadece WebAPI projesi)
+WORKDIR /src/AGMS/src/aGMS/WebAPI
 RUN dotnet restore
 
 # Tüm kaynak kodu kopyala
