@@ -3,6 +3,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Messages.Commands.Update;
 
@@ -10,11 +11,6 @@ public class UpdateMessageCommand : IRequest<UpdatedMessageResponse>
 {
     public Guid Id { get; set; }
     public string Content { get; set; }
-    public DateTime SentAt { get; set; }
-    public User Sender { get; set; }
-    public User Receiver { get; set; }
-    public Guid ReceiverId { get; set; }
-    public Guid SenderId { get; set; }
     public bool IsRead { get; set; }
 
     public class UpdateMessageCommandHandler : IRequestHandler<UpdateMessageCommand, UpdatedMessageResponse>
@@ -33,11 +29,18 @@ public class UpdateMessageCommand : IRequest<UpdatedMessageResponse>
 
         public async Task<UpdatedMessageResponse> Handle(UpdateMessageCommand request, CancellationToken cancellationToken)
         {
-            Message? message = await _messageRepository.GetAsync(predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
+            Message? message = await _messageRepository.GetAsync(
+                predicate: m => m.Id == request.Id, 
+                include: query => query.Include(m => m.Sender).Include(m => m.Receiver),
+                cancellationToken: cancellationToken);
+                
             await _messageBusinessRules.MessageShouldExistWhenSelected(message);
-            message = _mapper.Map(request, message);
+            
+            // Sadece Content ve IsRead alanlarını güncelle
+            message!.Content = request.Content;
+            message.IsRead = request.IsRead;
 
-            await _messageRepository.UpdateAsync(message!);
+            await _messageRepository.UpdateAsync(message);
 
             UpdatedMessageResponse response = _mapper.Map<UpdatedMessageResponse>(message);
             return response;

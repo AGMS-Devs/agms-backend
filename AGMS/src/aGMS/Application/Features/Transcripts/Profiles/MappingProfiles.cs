@@ -2,6 +2,7 @@ using Application.Features.Transcripts.Commands.Create;
 using Application.Features.Transcripts.Commands.Delete;
 using Application.Features.Transcripts.Commands.Update;
 using Application.Features.Transcripts.Commands.UpdateTranscriptCalculations;
+using Application.Features.Transcripts.Commands.UpdateAllTranscriptCalculations;
 using Application.Features.Transcripts.Queries.GetById;
 using Application.Features.Transcripts.Queries.GetList;
 using AutoMapper;

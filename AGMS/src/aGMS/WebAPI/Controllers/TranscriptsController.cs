@@ -2,6 +2,7 @@ using Application.Features.Transcripts.Commands.Create;
 using Application.Features.Transcripts.Commands.Delete;
 using Application.Features.Transcripts.Commands.Update;
 using Application.Features.Transcripts.Commands.UpdateTranscriptCalculations;
+using Application.Features.Transcripts.Commands.UpdateAllTranscriptCalculations;
 using Application.Features.Transcripts.Queries.GetById;
 using Application.Features.Transcripts.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
@@ -34,6 +35,14 @@ public class TranscriptsController : BaseController
     public async Task<IActionResult> UpdateCalculations([FromRoute] Guid studentId)
     {
         UpdatedTranscriptCalculationsResponse response = await Mediator.Send(new UpdateTranscriptCalculationsCommand { StudentId = studentId });
+
+        return Ok(response);
+    }
+
+    [HttpPut("calculate-all")]
+    public async Task<IActionResult> UpdateAllCalculations()
+    {
+        UpdatedAllTranscriptCalculationsResponse response = await Mediator.Send(new UpdateAllTranscriptCalculationsCommand());
 
         return Ok(response);
     }

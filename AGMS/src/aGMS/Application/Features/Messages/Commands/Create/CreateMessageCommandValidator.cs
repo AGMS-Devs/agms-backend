@@ -6,12 +6,7 @@ public class CreateMessageCommandValidator : AbstractValidator<CreateMessageComm
 {
     public CreateMessageCommandValidator()
     {
-        RuleFor(c => c.Content).NotEmpty();
-        RuleFor(c => c.SentAt).NotEmpty();
-        RuleFor(c => c.Sender).NotEmpty();
-        RuleFor(c => c.Receiver).NotEmpty();
-        RuleFor(c => c.ReceiverId).NotEmpty();
-        RuleFor(c => c.SenderId).NotEmpty();
-        RuleFor(c => c.IsRead).NotEmpty();
+        RuleFor(c => c.Content).NotEmpty().WithMessage("Message content is required");
+        RuleFor(c => c.ReceiverId).NotEmpty().WithMessage("Receiver ID is required");
     }
 }

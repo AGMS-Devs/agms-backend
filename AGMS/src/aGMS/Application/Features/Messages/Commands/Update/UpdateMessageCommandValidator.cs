@@ -6,13 +6,8 @@ public class UpdateMessageCommandValidator : AbstractValidator<UpdateMessageComm
 {
     public UpdateMessageCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty();
-        RuleFor(c => c.Content).NotEmpty();
-        RuleFor(c => c.SentAt).NotEmpty();
-        RuleFor(c => c.Sender).NotEmpty();
-        RuleFor(c => c.Receiver).NotEmpty();
-        RuleFor(c => c.ReceiverId).NotEmpty();
-        RuleFor(c => c.SenderId).NotEmpty();
-        RuleFor(c => c.IsRead).NotEmpty();
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Message ID is required");
+        RuleFor(c => c.Content).NotEmpty().WithMessage("Message content is required");
+        RuleFor(c => c.IsRead).NotNull().WithMessage("IsRead status is required");
     }
 }
