@@ -100,14 +100,11 @@ builder.Services.AddSwaggerGen(opt =>
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(opt =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(opt =>
-    {
-        opt.DocExpansion(DocExpansion.None);
-    });
-}
+    opt.DocExpansion(DocExpansion.None);
+});
 
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
@@ -116,6 +113,10 @@ app.UseDbMigrationApplier();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Health check endpoint
+app.MapGet("/", () => "AGMS Backend is running! 🚀");
+app.MapGet("/health", () => new { status = "healthy", timestamp = DateTime.UtcNow });
 
 app.MapControllers();
 
