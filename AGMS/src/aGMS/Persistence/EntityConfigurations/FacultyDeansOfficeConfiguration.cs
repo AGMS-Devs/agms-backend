@@ -23,6 +23,11 @@ public class FacultyDeansOfficeConfiguration : IEntityTypeConfiguration<FacultyD
                .WithMany(sa => sa.FacultyDeansOffices)
                .HasForeignKey(fdo => fdo.StudentAffairId);
 
+        builder.HasMany(fdo => fdo.Departments)
+               .WithOne(d => d.FacultyDeansOffice)
+               .HasForeignKey(d => d.FacultyId)
+               .OnDelete(DeleteBehavior.Cascade);
+
         builder.HasData(GetSeeds());
     }
 
@@ -38,6 +43,7 @@ public class FacultyDeansOfficeConfiguration : IEntityTypeConfiguration<FacultyD
             FacultyName = "Fen Fakültesi",
             StudentAffairId = StudentAffairConfiguration.StudentAffairId,
             CreatedDate = DateTime.UtcNow
+            
         };
 
         // Mühendislik Fakültesi

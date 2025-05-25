@@ -4,6 +4,7 @@ using Application.Features.Students.Commands.Update;
 using Application.Features.Students.Queries.GetById;
 using Application.Features.Students.Queries.GetList;
 using Application.Features.Students.Queries.GetStudentsByDepartment;
+using Application.Features.Students.Queries.GetStudentsByFaculty;
 using Application.Features.Students.Queries.GetAllStudents;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
@@ -67,6 +68,14 @@ public class StudentsController : BaseController
     {
         GetStudentsByDepartmentQuery query = new() { DepartmentId = departmentId, PageRequest = pageRequest };
         GetListResponse<GetStudentsByDepartmentListItemDto> response = await Mediator.Send(query);
+        return Ok(response);
+    }
+
+    [HttpGet("by-faculty/{facultyId}")]
+    public async Task<IActionResult> GetStudentsByFaculty([FromRoute] Guid facultyId, [FromQuery] PageRequest pageRequest)
+    {
+        GetStudentsByFacultyQuery query = new() { FacultyId = facultyId, PageRequest = pageRequest };
+        GetListResponse<GetStudentsByFacultyListItemDto> response = await Mediator.Send(query);
         return Ok(response);
     }
 }
