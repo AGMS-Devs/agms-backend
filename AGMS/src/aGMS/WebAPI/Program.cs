@@ -109,8 +109,8 @@ app.UseSwaggerUI(opt =>
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
-// Temporarily disable migration for testing
-// app.UseDbMigrationApplier();
+// Apply database migrations on startup
+app.UseDbMigrationApplier();
 
 app.UseAuthentication();
 app.UseAuthorization();
